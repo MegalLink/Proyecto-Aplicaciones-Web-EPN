@@ -13,6 +13,7 @@ import { RegisterComponent } from './componentes/user/register/register.componen
 import { ProfileComponent } from './componentes/user/profile/profile.component';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { CompraComponent } from './componentes/compra/compra.component';
+import { ProductosService } from './componentes/Servicios/productos.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { CompraComponent } from './componentes/compra/compra.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ProductosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

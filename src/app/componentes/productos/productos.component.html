@@ -1,1 +1,40 @@
-<p>productos works!</p>
+<header class="site-header inicio mb-5">
+    <div class="contenedor contenido-header">
+        <h1>Productos</h1>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card-columns">
+
+                <div class="card animated fadeIn fast" *ngFor="let prod of productos; let i = index">
+                    <img [src]="prod.img" class="card-img-top" [alt]="prod.nombre">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ prod.nombre }}</h5>
+                        <p class="card-text text-center">Precio: {{ prod.precio }}$</p>
+
+
+                        <a class="btn btn btn-outline-primary btn-block">Añadir</a>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <i class="fas fa-shopping-cart"></i>
+            <div class="container bg-dark">
+                <input type="text" class="form-control mt-2 mb-2" id="example" placeholder="Producto">
+                <input type="text" class="form-control mt-2 mb-2" id="example" placeholder="Producto">
+                <input type="text" class="form-control mt-2 mb-2" id="example" placeholder="Producto">
+            </div>
+            <a class="btn btn btn-outline-success btn-block">Confirmar</a>
+        </div>
+
+    </div>
+
+</div>
