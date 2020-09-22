@@ -68,7 +68,7 @@ export class AuthService {
    }))
   }
   getUsuario(user_id:string){
-   return this.usuarios.find(user=>user.user_id=user_id)
+   return this.usuarios.find(user=>user.user_id==user_id)
   }
   putUsuario(user:UsuarioI){
    

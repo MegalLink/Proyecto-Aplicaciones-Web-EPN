@@ -25,7 +25,7 @@ export interface UsuarioI{
     telefono:number;
     correo:string;
     direccion:string;
-    admin?:boolean;
+    admin?:string;
     key?:string;
 
 }

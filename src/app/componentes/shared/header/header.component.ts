@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../../../Servicios/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,24 +9,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authS:AuthService) { }
+  constructor(private authS:AuthService,private router:Router) {
+
+    this.authS.isAuth().subscribe(resp=>{
+      // console.log(resp)
+       if(resp){
+         //console.log("Respuesta",resp)
+         this.isLogged=true;
+         const user=this.authS.getUsuario(resp.uid)
+         //console.log(user)
+         if(user.admin){
+           this.isAdmin=true
+         }else{this.isAdmin=false}
+        //console.log("Admin",this.isAdmin)
+       }else{
+         this.isLogged=false;
+       }
+       
+     })
+        
+
+   }
+  isAdmin:boolean=false;
   isLogged:boolean=false;
   ngOnInit(): void {
-    this.authS.isAuth().subscribe(resp=>{
-     // console.log(resp)
-      if(resp){
-        this.isLogged=true;
-      }else{
-        this.isLogged=false;
-      }
-      
-    })
-       
+    
   }
 
   onLogOut(){
     console.log("Clicked")
     this.authS.logOut();
+    this.isLogged=false
+    this.isAdmin=false
+    this.router.navigate(['inicio'])
+
   }
 
 }

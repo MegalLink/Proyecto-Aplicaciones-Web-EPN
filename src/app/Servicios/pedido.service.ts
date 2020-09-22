@@ -20,7 +20,7 @@ export class PedidoService {
    }))
   }
   getPedido(pedido_id:string){
-    return this.pedidos.find(pedido=>pedido.id=pedido_id)
+    return this.pedidos.find(pedido=>pedido.id==pedido_id)
    }
    putPedido(pedido:PedidoI){
     
@@ -36,6 +36,10 @@ export class PedidoService {
       })
     )
   }
+  deletePedido(id:string)
+   {
+return this.http.delete(`${this.url}/pedidos/${id}.json`)
+   }
 
   private crearArreglo(pedidosObjs:object){
     const pedidos: PedidoI[]=[];

@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 
 onLogin(email,password){
  this.authS.login(email,password).then(resolve=>{
-     console.log(resolve)
+     //console.log(resolve)
      this.router.navigate(['productos']);
     }).catch(reject=>{
       this.errMesg=reject

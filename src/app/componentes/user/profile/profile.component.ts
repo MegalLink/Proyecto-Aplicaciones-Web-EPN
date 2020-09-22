@@ -24,7 +24,7 @@ permitir_modificar=false
       if(user){
        
         this.user=this.authS.getUsuario(user.uid)
-        console.log(this.user)
+      //  console.log(this.user)
       }
      
     })

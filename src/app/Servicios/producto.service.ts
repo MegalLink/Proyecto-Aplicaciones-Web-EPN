@@ -21,14 +21,14 @@ export class ProductoService {
   }
 
   getProducto(producto_id:string){
-    return this.productos.find(pedido=>pedido.id=producto_id)
+    return this.productos.find(pedido=>pedido.id==producto_id)
    }
    putProducto(producto:ProductoI){
     
     return this.http.put(`${this.url}/productos/${producto.id}.json`,producto)
    }
    postProducto(producto:ProductoI){
-    this.http.post(`${this.url}/productos.json`,producto).pipe(
+   return this.http.post(`${this.url}/productos.json`,producto).pipe(
       map((resp:any)=>{
         
         resp.name=producto.id
@@ -37,6 +37,10 @@ export class ProductoService {
       })
     )
   }
+  deleteProducto(id:string)
+   {
+return this.http.delete(`${this.url}/productos/${id}.json`)
+   }
 
   private crearArreglo(productosObj:object){
     const productos: ProductoI[]=[];

@@ -1,3 +1,4 @@
+import { AdminGuard } from './guards/admin.guard';
 import { ProfileComponent } from './componentes/user/profile/profile.component';
 import { PedidoComponent } from './componentes/admin/pedido/pedido.component';
 import { PedidosComponent } from './componentes/admin/pedidos/pedidos.component';
@@ -6,7 +7,7 @@ import { ProductosAdminComponent } from './componentes/admin/productos-admin/pro
 
 import { AdminComponent } from './componentes/admin/admin/admin.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { NosotrosComponent } from './componentes/nosotros/nosotros.component';
 import { ProductosComponent } from './componentes/productos/productos.component';
@@ -36,7 +37,8 @@ const routes: Routes = [
   },
   {
     component: AdminComponent, // COMPONENTE
-    path: 'admin' // URL
+    path: 'admin' ,// URL
+    canActivate:[AdminGuard]
   },
   {
     component: ProductosAdminComponent, // COMPONENTE
@@ -59,8 +61,8 @@ const routes: Routes = [
     path: 'info-user' // URL
   },
   {
-    path: '',
-    redirectTo: '/inicio',
+    path: '**',
+    redirectTo: 'inicio',
     pathMatch: 'full'
   },
   

@@ -1,3 +1,4 @@
+import { ProductoComponent } from './componentes/admin/producto/producto.component';
 import { ProductoService } from './Servicios/producto.service';
 import { PedidoService } from './Servicios/pedido.service';
 import { AuthService } from './Servicios/auth.service';
@@ -43,11 +44,12 @@ import { ProductosAdminComponent } from './componentes/admin/productos-admin/pro
     PedidosComponent,
     PedidoComponent,
     AdminComponent,
-    ProductosAdminComponent
+    ProductosAdminComponent,
+    ProductoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,AngularFireModule.initializeApp(firebaseConfig),AngularFireAuthModule,FormsModule,ReactiveFormsModule,HttpClientModule
+    AppRoutingModule,FormsModule,ReactiveFormsModule,AngularFireModule.initializeApp(firebaseConfig),AngularFireAuthModule,HttpClientModule
   ],
   providers: [ProductoService,AuthService,PedidoService],
   bootstrap: [AppComponent]

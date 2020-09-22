@@ -1,1 +1,42 @@
-<p>producto works!</p>
+<header class="site-header inicio mb-5">
+    <div class="contenedor contenido-header">
+        <h1>Administración Producto</h1>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row text-rigth">
+        <div class="col">
+            <button [routerLink]="['/admin']" class="btn btn-danger">
+                <i class="fa fa-arrow-left"></i>
+                Regresar
+              </button>
+          
+        </div>
+      </div>
+      <div class="row animated fadeIn faster">
+        <div *ngIf="producto" class="col">
+            <form  (ngSubmit)="guardar(f)" #f="ngForm">
+               
+                <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text"
+                  class="form-control"
+                  [(ngModel)]="producto.nombre"
+                  name="nombre"
+                  placeholder="Nombre del Heroe"
+                  required>
+                  
+                </div>
+               
+              <div class="form-group text-center">
+                <button class="btn btn-primary w-25"type="submit">
+                  <i class="fa fa-save"></i>
+                  {{btnText}}
+                </button>
+              </div>
+              </form>
+         
+        </div>
+      </div>
+</div>
