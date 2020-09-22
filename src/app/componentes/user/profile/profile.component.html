@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Confirmar datos de usuario</h5>
@@ -9,7 +9,9 @@
           </button>
         </div>
         <div *ngIf="user" class="modal-body">
-            <form (ngSubmit)="guardar(f)" #f="ngForm">
+          <div class="row">
+            <div class="col-md-6">
+              <form (ngSubmit)="guardar(f)" #f="ngForm">
                
                 <div class="form-group">
                   <label>Nombre</label>
@@ -57,10 +59,16 @@
                 </button>
               </div>
               </form>
+            </div>
+            <div class="col-md-6">
+                <app-detalle-pedido [pedido]="pedido"></app-detalle-pedido>
+            </div>
+          </div>
+           
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-success">Confirmar pedido</button>
+          <button type="button" class="btn btn-success" (click)="hacerPedido()" data-dismiss="modal">Confirmar pedido</button>
         </div>
       </div>
     </div>

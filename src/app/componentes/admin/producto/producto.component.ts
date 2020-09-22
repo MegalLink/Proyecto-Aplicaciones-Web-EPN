@@ -11,7 +11,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit {
-  producto:ProductoI
+  producto:ProductoI={
+    categoria:"",descripcion:'',id:'nuevo',nombre:'',photoUrl:"",precio:null
+  }
   btnText="Guardar";
   constructor(private productoS:ProductoService,private route:ActivatedRoute) {
 
@@ -21,10 +23,18 @@ export class ProductoComponent implements OnInit {
     const id=this.route.snapshot.paramMap.get('id');
     if(id!=='nuevo'){
       this.btnText="Modificar"
-      this.producto=this.productoS.getProducto(id)
-      console.log(this.producto)
+      // this.productoS.getProducto(id).subscribe(resp=>{
+      //   console.log(resp)
+      // })
+      this.productoS.getProducto(id).subscribe((resp:any)=>{
+        this.producto=resp
+        this.producto.id=id
+       // console.log(resp)
+       console.log(this.producto.id)
+      })
     
     }
+    
   }
 
   guardar(form:NgForm){

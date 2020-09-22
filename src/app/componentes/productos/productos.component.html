@@ -30,15 +30,15 @@
            
             <div class="container ">
             <div *ngFor="let prod of pedido.productos">
-                <p> {{prod.nombre}} - ${{prod.precio}} <button class="btn btn-danger btn-sm"(click)="borrarDelCarrito(prod)">  <i class="fas fa-times" ></i></button></p>
+                <p> {{prod.nombre}} - {{prod.precio |currency}} <button class="btn btn-danger btn-sm"(click)="borrarDelCarrito(prod)">  <i class="fas fa-times" ></i></button></p>
             </div>
             </div>
             <p class="alert alert-primary">Total pedido: ${{pedido.total}}</p>
-            <a  class="btn btn btn-outline-success btn-block" data-toggle="modal" data-target="#exampleModal" >Hacer pedido <i class="fas fa-check"></i></a>
-            <a class="btn btn btn-outline-danger btn-block" (click)="cancelarCarrito()" >Cancelar <i class="fas fa-trash-alt"></i></a>
+            <button  class="btn btn btn-outline-success btn-block" [disabled]="!isValid" data-toggle="modal" data-target="#exampleModal" >Hacer pedido <i class="fas fa-check"></i></button>
+            <button class="btn btn btn-outline-danger btn-block" [disabled]="!isValid" (click)="cancelarCarrito()" >Cancelar <i class="fas fa-trash-alt"></i></button>
         </div>
 
     </div>
 
 </div>
-<app-profile></app-profile>
+<app-profile [pedido]="pedido"></app-profile>

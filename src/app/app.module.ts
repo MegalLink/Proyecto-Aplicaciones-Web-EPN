@@ -28,6 +28,7 @@ import { PedidoComponent } from './componentes/admin/pedido/pedido.component';
 
 import { AdminComponent } from './componentes/admin/admin/admin.component';
 import { ProductosAdminComponent } from './componentes/admin/productos-admin/productos-admin.component';
+import { DetallePedidoComponent } from './componentes/detalle-pedido/detalle-pedido.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { ProductosAdminComponent } from './componentes/admin/productos-admin/pro
     PedidoComponent,
     AdminComponent,
     ProductosAdminComponent,
-    ProductoComponent
+    ProductoComponent,
+    DetallePedidoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-<h1>Listado de Héroes</h1>
+<h1>Listado de Productos</h1>
 <hr>
 <div class="row">
   <div class="col text-right">
@@ -19,7 +19,7 @@
     <tr *ngFor="let producto of productos;let i=index">
       <th scope="row">{{i+1}}</th>
       <td>{{producto.nombre}}</td>
-      <td>{{producto.precio}}</td>
+      <td>{{producto.precio| currency}}</td>
       <td>
         <img [src]="producto.photoUrl" [alt]="producto.nombre" class="img-thumbnail ">
       </td>

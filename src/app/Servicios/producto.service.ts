@@ -7,11 +7,9 @@ import {map} from 'rxjs/operators';
 })
 export class ProductoService {
   private url="https://heladeriaproyectoappweb.firebaseio.com"
-  private productos:ProductoI[];
+
   constructor(private http:HttpClient){
-    this.getProductos().subscribe(resp=>{
-      this.productos=resp;
-    })
+  
   }
 
   getProductos(){
@@ -21,10 +19,10 @@ export class ProductoService {
   }
 
   getProducto(producto_id:string){
-    return this.productos.find(pedido=>pedido.id==producto_id)
+    return this.http.get(`${this.url}/productos/${producto_id}.json`)
    }
    putProducto(producto:ProductoI){
-    
+    console.log("Post")
     return this.http.put(`${this.url}/productos/${producto.id}.json`,producto)
    }
    postProducto(producto:ProductoI){
@@ -37,9 +35,8 @@ export class ProductoService {
       })
     )
   }
-  deleteProducto(id:string)
-   {
-return this.http.delete(`${this.url}/productos/${id}.json`)
+  deleteProducto(producto_id:string){
+    return this.http.delete(`${this.url}/productos/${producto_id}.json`)
    }
 
   private crearArreglo(productosObj:object){

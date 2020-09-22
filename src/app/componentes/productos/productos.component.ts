@@ -20,6 +20,7 @@ export class ProductosComponent implements OnInit {
   
   productos: ProductoI[];
   isLogged=false;
+  isValid=false
   constructor(private _productosService: ProductoService,private authS:AuthService,private router:Router) { 
   
   }
@@ -47,6 +48,11 @@ export class ProductosComponent implements OnInit {
     if(this.isLogged){
       this.pedido.productos.push(producto);
       this.pedido.total+=producto.precio
+      Swal.fire({
+        title:producto.nombre,
+        text:'Se agrego al carrito',
+        icon: 'success'
+      })
     }else{
       Swal.fire({
         icon: 'warning',
@@ -55,7 +61,11 @@ export class ProductosComponent implements OnInit {
         
       })
     }
-
+    if(this.pedido.total===0){
+      this.isValid=false
+    }else{
+      this.isValid=true
+    }
   }
   hacerPedido(){
     Swal.fire({
@@ -71,9 +81,15 @@ export class ProductosComponent implements OnInit {
     })
   }
   borrarDelCarrito(producto:ProductoI){
+   
     
   this.pedido.productos= this.pedido.productos.filter(prod=> prod!=producto)
   this.pedido.total-=producto.precio
+  if(this.pedido.total===0){
+    this.isValid=false
+  }else{
+    this.isValid=true
+  }
    }
    cancelarCarrito(){
 
@@ -87,6 +103,7 @@ export class ProductosComponent implements OnInit {
       if(resp.value){
         this.pedido.productos=[]
         this.pedido.total=0.00
+        this.isValid=false
       }
     })
       

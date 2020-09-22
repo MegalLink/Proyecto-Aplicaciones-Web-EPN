@@ -7,11 +7,9 @@ import {map} from 'rxjs/operators';
 })
 export class PedidoService {
   private url="https://heladeriaproyectoappweb.firebaseio.com"
-  private pedidos:PedidoI[]
+  
   constructor(private http:HttpClient){
-    this.getPedidos().subscribe(res=>{
-      this.pedidos=res;
-    })
+    
   }
   
   getPedidos(){
@@ -20,14 +18,14 @@ export class PedidoService {
    }))
   }
   getPedido(pedido_id:string){
-    return this.pedidos.find(pedido=>pedido.id==pedido_id)
+    return this.http.get(`${this.url}/pedidos/${pedido_id}.json`)
    }
    putPedido(pedido:PedidoI){
     
     return this.http.put(`${this.url}/pedidos/${pedido.id}.json`,pedido)
    }
    postPedido(pedido:PedidoI){
-    this.http.post(`${this.url}/pedidos.json`,pedido).pipe(
+    return this.http.post(`${this.url}/pedidos.json`,pedido).pipe(
       map((resp:any)=>{
         
         resp.name=pedido.id

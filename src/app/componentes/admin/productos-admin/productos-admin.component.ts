@@ -32,8 +32,11 @@ productos: ProductoI[]=[];
       showCancelButton:true
     }).then(resp=>{
       if(resp.value){
+        //console.log(this.productos[i])
         this.productos.splice(i,1);
-        this.productoS.deleteProducto(producto.id)
+        this.productoS.deleteProducto(producto.id).subscribe(res=>{
+          console.log(resp)
+        })
       }
     })
    

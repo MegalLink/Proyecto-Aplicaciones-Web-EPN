@@ -1,1 +1,6 @@
-<p>pedidos works!</p>
+<h1>Listado de Pedidos</h1>
+<hr>
+
+<div  *ngFor="let pedido of pedidos; let i = index">
+    <app-detalle-pedido [pedido]="pedido" [index]="i+1"></app-detalle-pedido>
+</div>

@@ -1,0 +1,42 @@
+<div *ngIf="!pedido.estado"  >
+    <div class="card" >
+        
+            <div class="card-body">
+          <h3 class="card-title text-center">Pedido    <span *ngIf="index"> {{index}}</span>                </h3>
+           <div class="row">
+            <div class="col-sm-6" >
+                <h5>Productos    </h5>
+                <hr>
+                    <ul>
+                        <li class=" fadeIn fast" *ngFor="let prod of pedido.productos; let i = index">
+                            <img [src]="prod.photoUrl"  [alt]="prod.nombre">
+                            
+                                <h5 >{{ prod.nombre }}</h5>
+                                <p >Precio: {{ prod.precio }}$  </p>                                     
+                        </li>
+                    </ul>
+                        <h4 class="alert alert-success">Total: {{pedido.total|currency}}</h4>
+               </div>
+               <div class="col-sm-6" *ngIf="usuario" >
+                <h5>Datos Usuario</h5>
+                   <hr>
+                   
+                   <p>Nombre: {{usuario.nombre}}</p>
+                   <p>Apellido: {{usuario.apellido}}</p>
+                   <p>Dirección: {{usuario.direccion}}</p>
+                   <p>Telefono: {{usuario.telefono}}</p>
+                   <div *ngIf="index">
+                    <button  (click)="entregarPedido()" class="btn btn-danger">Entregar Pedido</button>
+                   </div>
+                  
+               </div>
+           </div>
+               
+
+               
+           
+        </div>
+      </div>
+
+
+</div>

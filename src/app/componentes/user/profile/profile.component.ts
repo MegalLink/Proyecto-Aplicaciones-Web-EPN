@@ -1,9 +1,12 @@
-import { UsuarioI } from './../../../models/models';
+import { Router } from '@angular/router';
+import { PedidoService } from './../../../Servicios/pedido.service';
+import { UsuarioI, PedidoI } from './../../../models/models';
 import { AuthService } from './../../../Servicios/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -11,15 +14,16 @@ import { Observable } from 'rxjs';
 })
 export class ProfileComponent implements OnInit {
 user:UsuarioI
-
+@Input() pedido:PedidoI
 permitir_modificar=false
 
-  constructor(private authS:AuthService) {
+  constructor(private authS:AuthService,private pedidoS:PedidoService,private router:Router) {
       
 
    }
 
   ngOnInit(): void {
+    console.log(this.pedido)
     this.authS.isAuth().subscribe(user=>{
       if(user){
        
@@ -49,6 +53,19 @@ permitir_modificar=false
     })
     })
     
+   }
+   hacerPedido(){
+     this.pedidoS.postPedido(this.pedido).subscribe(resp=>{
+
+      Swal.fire({
+        title:"Pedido realizado con Éxito",
+        text:'Su pedido llegará en breve',
+        icon: 'success'
+      })
+     })
+     this.router.navigate(['/inicio'])
+   
+
    }
    
 

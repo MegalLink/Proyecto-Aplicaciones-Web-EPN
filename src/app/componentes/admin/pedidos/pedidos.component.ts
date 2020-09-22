@@ -1,3 +1,5 @@
+import { PedidoService } from './../../../Servicios/pedido.service';
+import { PedidoI } from './../../../models/models';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PedidosComponent implements OnInit {
 
-  constructor() { }
+  pedidos:PedidoI[]
+  constructor(private pedidosS:PedidoService) { }
 
   ngOnInit(): void {
+    this.pedidosS.getPedidos().subscribe(resp=>{
+      this.pedidos=resp
+    })
   }
 
 }
