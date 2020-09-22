@@ -1,3 +1,10 @@
+import { ProfileComponent } from './componentes/user/profile/profile.component';
+import { PedidoComponent } from './componentes/admin/pedido/pedido.component';
+import { PedidosComponent } from './componentes/admin/pedidos/pedidos.component';
+import { ProductoComponent } from './componentes/admin/producto/producto.component';
+import { ProductosAdminComponent } from './componentes/admin/productos-admin/productos-admin.component';
+
+import { AdminComponent } from './componentes/admin/admin/admin.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InicioComponent } from './componentes/inicio/inicio.component';
@@ -28,10 +35,35 @@ const routes: Routes = [
     path: 'contacto' // URL
   },
   {
+    component: AdminComponent, // COMPONENTE
+    path: 'admin' // URL
+  },
+  {
+    component: ProductosAdminComponent, // COMPONENTE
+    path: 'productos-admin' // URL
+  },
+  {
+    component: ProductoComponent, // COMPONENTE
+    path: 'producto/:id' // URL
+  },
+  {
+    component: PedidosComponent, // COMPONENTE
+    path: 'pedidos' // URL
+  },
+  {
+    component: PedidoComponent, // COMPONENTE
+    path: 'pedido/:id' // URL
+  },
+  {
+    component: ProfileComponent, // COMPONENTE
+    path: 'info-user' // URL
+  },
+  {
     path: '',
     redirectTo: '/inicio',
     pathMatch: 'full'
-  }
+  },
+  
 ];
 
 @NgModule({

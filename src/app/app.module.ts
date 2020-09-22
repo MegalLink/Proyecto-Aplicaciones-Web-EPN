@@ -1,3 +1,6 @@
+import { ProductoService } from './Servicios/producto.service';
+import { PedidoService } from './Servicios/pedido.service';
+import { AuthService } from './Servicios/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -13,8 +16,17 @@ import { RegisterComponent } from './componentes/user/register/register.componen
 import { ProfileComponent } from './componentes/user/profile/profile.component';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { CompraComponent } from './componentes/compra/compra.component';
-import { ProductosService } from './componentes/Servicios/productos.service';
+import {HttpClientModule} from '@angular/common/http'
+//firebase
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import {firebaseConfig}  from '../environments/environment'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PedidosComponent } from './componentes/admin/pedidos/pedidos.component';
+import { PedidoComponent } from './componentes/admin/pedido/pedido.component';
 
+import { AdminComponent } from './componentes/admin/admin/admin.component';
+import { ProductosAdminComponent } from './componentes/admin/productos-admin/productos-admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,13 +39,17 @@ import { ProductosService } from './componentes/Servicios/productos.service';
     RegisterComponent,
     ProfileComponent,
     ContactoComponent,
-    CompraComponent
+    CompraComponent,
+    PedidosComponent,
+    PedidoComponent,
+    AdminComponent,
+    ProductosAdminComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,AngularFireModule.initializeApp(firebaseConfig),AngularFireAuthModule,FormsModule,ReactiveFormsModule,HttpClientModule
   ],
-  providers: [ProductosService],
+  providers: [ProductoService,AuthService,PedidoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

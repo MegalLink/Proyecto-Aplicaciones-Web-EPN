@@ -1,1 +1,68 @@
-<p>profile works!</p>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirmar datos de usuario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div *ngIf="user" class="modal-body">
+            <form (ngSubmit)="guardar(f)" #f="ngForm">
+               
+                <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text"
+                  class="form-control"
+                  [(ngModel)]="user.nombre"
+                  name="nombre"
+                  placeholder="Nombre de usuario"
+                  required 
+                 [disabled]="!permitir_modificar">
+                  
+                </div>
+                <div class="form-group">
+                  <label>Direccion </label>
+                  <input type="text"
+                  class="form-control"
+                  [(ngModel)]="user.direccion"
+                  name="direccion"
+                  placeholder="Direccion de usuario"
+                  [disabled]="!permitir_modificar"
+                  >
+                 
+                </div>
+                <div class="form-group">
+                    <label>Telefono contacto: </label>
+                    <input type="text"
+                    class="form-control"
+                    [(ngModel)]="user.telefono"
+                    name="telefono"
+                    placeholder="Número telefónico"
+                    [disabled]="!permitir_modificar"
+                    >
+                   
+                  </div>
+                
+                 <hr>
+              <div class="form-group text-center">
+                <button *ngIf="!permitir_modificar"class="btn btn-primary w-50" (click)="permitir_modificar=!permitir_modificar">
+                  <i class="fa fa-save"></i>
+                 Modificar Datos
+                </button>
+                <button *ngIf="permitir_modificar"class="btn btn-primary w-50"type="submit" (click)="permitir_modificar=!permitir_modificar">
+                  <i class="fa fa-save"></i>
+                 Confirmar actualizar datos
+                </button>
+              </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success">Confirmar pedido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

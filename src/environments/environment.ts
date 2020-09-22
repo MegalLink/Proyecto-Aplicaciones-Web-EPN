@@ -5,6 +5,18 @@
 export const environment = {
   production: false
 };
+export const  firebaseConfig = {
+  apiKey: "AIzaSyAbRjno81oFEoZw4gxfq23a4G1eMegBzL0",
+  authDomain: "heladeriaproyectoappweb.firebaseapp.com",
+  databaseURL: "https://heladeriaproyectoappweb.firebaseio.com",
+  projectId: "heladeriaproyectoappweb",
+  storageBucket: "heladeriaproyectoappweb.appspot.com",
+  messagingSenderId: "611253987714",
+  appId: "1:611253987714:web:204ac88abc423a6402079b",
+  measurementId: "G-05BV5ETY44"
+};
+// Initialize Firebase
+//firebase.initializeApp(firebaseConfig);
 
 /*
  * For easier debugging in development mode, you can import the following file
