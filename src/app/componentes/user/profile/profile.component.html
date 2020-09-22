@@ -11,7 +11,7 @@
         <div *ngIf="user" class="modal-body">
           <div class="row">
             <div class="col-md-6">
-              <form (ngSubmit)="guardar(f)" #f="ngForm">
+              <form (ngSubmit)="guardar(formU)" #formU="ngForm">
                
                 <div class="form-group">
                   <label>Nombre</label>
@@ -53,7 +53,7 @@
                   <i class="fa fa-save"></i>
                  Modificar Datos
                 </button>
-                <button *ngIf="permitir_modificar"class="btn btn-primary w-50"type="submit" (click)="permitir_modificar=!permitir_modificar">
+                <button *ngIf="permitir_modificar"class="btn btn-primary w-50" type="submit" (click)="permitir_modificar=!permitir_modificar; guardar(formU)">
                   <i class="fa fa-save"></i>
                  Confirmar actualizar datos
                 </button>

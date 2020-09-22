@@ -71,7 +71,7 @@ export class AuthService {
    return this.usuarios.find(user=>user.user_id==user_id)
   }
   putUsuario(user:UsuarioI){
-   
+   console.log("Put key",user.key)
    return this.http.put(`${this.url}/users/${user.key}.json`,user)
   }
   private crearArreglo(usuariosObj:object){

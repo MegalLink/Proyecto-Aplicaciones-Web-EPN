@@ -34,6 +34,8 @@ permitir_modificar=false
     })
   }
   guardar(form:NgForm){
+
+    console.log("Guardar")
     if(form.invalid){
       console.log("Formulario no valido")
        return;
@@ -44,8 +46,9 @@ permitir_modificar=false
       
       allowOutsideClick:false
     });
-    let peticion:Observable<any>;
+   
    this.authS.putUsuario(this.user).subscribe(resp=>{
+     console.log("Resp profile",resp)
     Swal.fire({
       title:"Datos de usuario actualizados con Éxito",
       text:'Se actualizo correctamente',
