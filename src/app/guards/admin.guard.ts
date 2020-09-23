@@ -13,14 +13,16 @@ export class AdminGuard implements CanActivate {
      
       if(resp){
         //console.log("Resp",resp)
-        const user=this.authS.getUsuario(resp.uid)
-         //console.log("User",user.admin)
+       this.authS.getUsuario(resp.uid).subscribe(user=>{
         if(user.admin==="True"){
           this.isAdmin=true
         }else{
           this.isAdmin=false
           this.router.navigate(['inicio'])
          }
+       })
+         //console.log("User",user.admin)
+       
   
       }
       

@@ -16,12 +16,14 @@ export class HeaderComponent implements OnInit {
        if(resp){
          console.log("Respuesta",resp)
          this.isLogged=true;
-         const user=this.authS.getUsuario(resp.uid)
-         console.log(user)
-         if(user.admin){
-           this.isAdmin=true
-         }else{this.isAdmin=false}
-        console.log("Admin",this.isAdmin)
+         this.authS.getUsuario(resp.uid).subscribe(user=>{
+          console.log(user)
+          if(user.admin){
+            this.isAdmin=true
+          }else{this.isAdmin=false}
+         console.log("Admin",this.isAdmin)
+         })
+        
        }else{
          this.isLogged=false;
        }

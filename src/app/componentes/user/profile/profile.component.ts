@@ -27,7 +27,9 @@ permitir_modificar=false
     this.authS.isAuth().subscribe(user=>{
       if(user){
        
-        this.user=this.authS.getUsuario(user.uid)
+        this.authS.getUsuario(user.uid).subscribe(user=>{
+          this.user=user
+        })
       //  console.log(this.user)
       }
      

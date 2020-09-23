@@ -20,7 +20,9 @@ usuario:UsuarioI
   ngOnInit(): void {
     if(this.pedido){
      // console.log(this.pedido)
-      this.usuario= this.authS.getUsuario(this.pedido.user_id)
+      this.authS.getUsuario(this.pedido.user_id).subscribe(resp=>{
+        this.usuario= resp
+      })
     }
 
   }

@@ -4,6 +4,7 @@ import { AngularFireAuth } from  "@angular/fire/auth";
 import {UsuarioI} from "../models/models"
 import {map} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { of ,Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -67,8 +68,11 @@ export class AuthService {
       return this.crearArreglo(resp)
    }))
   }
-  getUsuario(user_id:string){
-   return this.usuarios.find(user=>user.user_id==user_id)
+  getUsuario(user_id:string):Observable<UsuarioI>{
+    
+    return of( this.usuarios.find(user=>user.user_id=user_id))
+ 
+    
   }
   putUsuario(user:UsuarioI){
    console.log("Put key",user.key)
