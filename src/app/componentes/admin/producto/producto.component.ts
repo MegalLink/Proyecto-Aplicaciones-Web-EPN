@@ -1,7 +1,7 @@
 import { ProductoI } from './../../../models/models';
 import { ProductoService } from './../../../Servicios/producto.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -15,7 +15,7 @@ export class ProductoComponent implements OnInit {
     categoria:"",descripcion:'',id:'nuevo',nombre:'',photoUrl:"",precio:null
   }
   btnText="Guardar";
-  constructor(private productoS:ProductoService,private route:ActivatedRoute) {
+  constructor(private productoS:ProductoService,private route:ActivatedRoute,private router:Router) {
 
    }
 
@@ -49,7 +49,7 @@ export class ProductoComponent implements OnInit {
       allowOutsideClick:false
     });
     let peticion:Observable<any>;
-    if(this.producto.id){
+    if(this.producto.id!=='nuevo'){
   peticion= this.productoS.putProducto(this.producto);
     }else{
   peticion= this.productoS.postProducto(this.producto);
@@ -60,6 +60,7 @@ export class ProductoComponent implements OnInit {
        text:'Se actualizo correctamente',
        icon: 'success'
      })
+     this.router.navigate(['admin'])
    })
    }
 

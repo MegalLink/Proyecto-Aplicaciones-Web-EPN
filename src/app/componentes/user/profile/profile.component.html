@@ -25,6 +25,17 @@
                   
                 </div>
                 <div class="form-group">
+                  <label>Apellido</label>
+                  <input type="text"
+                  class="form-control"
+                  [(ngModel)]="user.apellido"
+                  name="apellido"
+                  placeholder="Apellido de usuario"
+                  required 
+                 [disabled]="!permitir_modificar">
+                  
+                </div>
+                <div class="form-group">
                   <label>Direccion </label>
                   <input type="text"
                   class="form-control"
@@ -32,6 +43,7 @@
                   name="direccion"
                   placeholder="Direccion de usuario"
                   [disabled]="!permitir_modificar"
+                  required
                   >
                  
                 </div>
@@ -43,6 +55,7 @@
                     name="telefono"
                     placeholder="Número telefónico"
                     [disabled]="!permitir_modificar"
+                    required
                     >
                    
                   </div>

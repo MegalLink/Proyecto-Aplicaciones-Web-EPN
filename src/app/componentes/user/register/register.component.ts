@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
         }
         this.authS.register(user,this.registerForm.value.password).then(resolve=>{
           
-          this.router.navigate(['productos']);
+          this.router.navigate(['sdfsdfd']);
         }).catch(reject=>{
            this.errMesg=reject
            console.log(reject)

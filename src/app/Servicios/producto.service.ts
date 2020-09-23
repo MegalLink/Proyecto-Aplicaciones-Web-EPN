@@ -22,15 +22,16 @@ export class ProductoService {
     return this.http.get(`${this.url}/productos/${producto_id}.json`)
    }
    putProducto(producto:ProductoI){
-    console.log("Post")
+    console.log("Put")
     return this.http.put(`${this.url}/productos/${producto.id}.json`,producto)
    }
    postProducto(producto:ProductoI){
+    
    return this.http.post(`${this.url}/productos.json`,producto).pipe(
       map((resp:any)=>{
-        
-        resp.name=producto.id
-        console.log(resp)
+        console.log("Post Producto",resp)
+        producto.id=resp.name;
+       
         return resp;
       })
     )
