@@ -14,6 +14,7 @@ export class AuthService {
   constructor(private afAuth:AngularFireAuth,private http:HttpClient) {
     this.getUsuarios().subscribe(users=>{
       this.usuarios=users
+     
     })
    }
   login(mail,pass){
@@ -48,20 +49,26 @@ export class AuthService {
       this.afAuth.createUserWithEmailAndPassword(user.correo,password).then(res=>{
          console.log("USER UID",res.user.uid)
          user.user_id=res.user.uid
-         this.postUsuario(user)
+         this.usuarios.push(user)
+         this.postUsuario(user).subscribe(resp=>{
+      
+
+         })
+         
+
         resolve(res)
       }).catch(error=> reject(error))
     })
   }
   postUsuario(user:UsuarioI){
-    this.http.post(`${this.url}/users.json`,user).pipe(
+   return this.http.post(`${this.url}/users.json`,user).pipe(
       map((resp:any)=>{
         
         resp.name=user.user_id
-        console.log(resp)
+        console.log("Respuesta Post resp",resp,"Respuseta User Post",user)
         return resp;
       })
-    ).subscribe(r=>console.log("HTTP RES",r))
+    )
   }
   getUsuarios(){
     return this.http.get(`${this.url}/users.json`).pipe(map(resp=>{
@@ -70,7 +77,7 @@ export class AuthService {
   }
   getUsuario(user_id:string):Observable<UsuarioI>{
     
-    return of( this.usuarios.find(user=>user.user_id=user_id))
+    return of( this.usuarios.find(user=>user.user_id===user_id))
  
     
   }

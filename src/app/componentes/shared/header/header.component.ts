@@ -14,13 +14,16 @@ export class HeaderComponent implements OnInit {
     this.authS.isAuth().subscribe(resp=>{
       // console.log(resp)
        if(resp){
-         console.log("Respuesta",resp)
+         console.log("Respuesta is Auth uid",resp.uid)
          this.isLogged=true;
          this.authS.getUsuario(resp.uid).subscribe(user=>{
-          console.log(user)
-          if(user.admin){
-            this.isAdmin=true
-          }else{this.isAdmin=false}
+          console.log("Get User header",user)
+          if(user){
+            if(user.admin==="True"){
+              this.isAdmin=true
+            }else{this.isAdmin=false}
+          }
+          
          console.log("Admin",this.isAdmin)
          })
         
@@ -44,6 +47,7 @@ export class HeaderComponent implements OnInit {
     this.isLogged=false
     this.isAdmin=false
     this.router.navigate(['inicio'])
+    
 
   }
 

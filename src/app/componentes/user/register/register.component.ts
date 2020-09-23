@@ -57,6 +57,7 @@ export class RegisterComponent implements OnInit {
           correo:this.registerForm.value.correo,
           direccion:this.registerForm.value.direccion,
           user_id:"",
+          admin:"False"
           
         }
         this.authS.register(user,this.registerForm.value.password).then(resolve=>{
