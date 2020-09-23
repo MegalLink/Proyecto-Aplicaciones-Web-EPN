@@ -61,13 +61,14 @@ export class RegisterComponent implements OnInit {
         }
         this.authS.register(user,this.registerForm.value.password).then(resolve=>{
           this.onReset()
+          window.location.reload()
           Swal.fire({
             icon: 'success',
             title: 'Cuenta creada con éxito',
             text: 'Porfavor ingrese a su cuenta',
             
           }).then(r=>{
-            window.location.reload()
+           
             
             
           })
