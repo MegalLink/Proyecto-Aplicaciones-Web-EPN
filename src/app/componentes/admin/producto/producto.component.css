@@ -1,0 +1,33 @@
+.contenedor {
+    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.contenido-header {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.site-header.inicio {
+    background-image: url("https://images.pexels.com/photos/4144294/pexels-photo-4144294.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-position: center center;
+    background-size: cover;
+    height: 400px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.contenido-header h1 {
+    margin-top: 320px;
+    color: #ffffff;
+    background-color: grey;
+    opacity: 0.8;
+}
+
+.titulo {
+    text-align: center;
+}

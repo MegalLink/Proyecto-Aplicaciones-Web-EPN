@@ -1,1 +1,44 @@
-<p>productos works!</p>
+<header class="site-header inicio mb-5">
+    <div class="contenedor contenido-header">
+        <h1>Productos</h1>
+    </div>
+</header>
+
+<div class="contenedor">
+    <div class="row">
+
+        <div class="col-md-8">
+            <div class="card-columns">
+
+                <div class="card animated fadeIn fast" *ngFor="let prod of productos; let i = index">
+                    <img [src]="prod.photoUrl" class="card-img-top" [alt]="prod.nombre">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ prod.nombre }}</h5>
+                        <p class="card-text text-center">Precio: {{ prod.precio }}$  </p>
+
+
+                        <a class="btn btn btn-outline-primary btn-block" (click)="agregarACarrito(prod)"  >Añadir</a>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 ">
+            <h2>Carrito de compras <i class="fas fa-shopping-cart"></i></h2>
+           
+            <div class="container ">
+            <div *ngFor="let prod of pedido.productos">
+                <p> {{prod.nombre}} - {{prod.precio |currency}} <button class="btn btn-danger btn-sm"(click)="borrarDelCarrito(prod)">  <i class="fas fa-times" ></i></button></p>
+            </div>
+            </div>
+            <p class="alert alert-primary">Total pedido: ${{pedido.total}}</p>
+            <button  class="btn btn btn-outline-success btn-block" [disabled]="!isValid" data-toggle="modal" data-target="#exampleModal" >Hacer pedido <i class="fas fa-check"></i></button>
+            <button class="btn btn btn-outline-danger btn-block" [disabled]="!isValid" (click)="cancelarCarrito()" >Cancelar <i class="fas fa-trash-alt"></i></button>
+        </div>
+
+    </div>
+
+</div>
+<app-profile [pedido]="pedido"></app-profile>

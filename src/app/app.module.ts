@@ -1,3 +1,7 @@
+import { ProductoComponent } from './componentes/admin/producto/producto.component';
+import { ProductoService } from './Servicios/producto.service';
+import { PedidoService } from './Servicios/pedido.service';
+import { AuthService } from './Servicios/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -13,7 +17,18 @@ import { RegisterComponent } from './componentes/user/register/register.componen
 import { ProfileComponent } from './componentes/user/profile/profile.component';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { CompraComponent } from './componentes/compra/compra.component';
+import {HttpClientModule} from '@angular/common/http'
+//firebase
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import {firebaseConfig}  from '../environments/environment'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PedidosComponent } from './componentes/admin/pedidos/pedidos.component';
+import { PedidoComponent } from './componentes/admin/pedido/pedido.component';
 
+import { AdminComponent } from './componentes/admin/admin/admin.component';
+import { ProductosAdminComponent } from './componentes/admin/productos-admin/productos-admin.component';
+import { DetallePedidoComponent } from './componentes/detalle-pedido/detalle-pedido.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,13 +41,19 @@ import { CompraComponent } from './componentes/compra/compra.component';
     RegisterComponent,
     ProfileComponent,
     ContactoComponent,
-    CompraComponent
+    CompraComponent,
+    PedidosComponent,
+    PedidoComponent,
+    AdminComponent,
+    ProductosAdminComponent,
+    ProductoComponent,
+    DetallePedidoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,FormsModule,ReactiveFormsModule,AngularFireModule.initializeApp(firebaseConfig),AngularFireAuthModule,HttpClientModule
   ],
-  providers: [],
+  providers: [ProductoService,AuthService,PedidoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
