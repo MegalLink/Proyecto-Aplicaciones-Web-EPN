@@ -1,1 +1,145 @@
-<p>register works!</p>
+<div class="card m-3 bg-dark text-light">
+  <h5 class="card-header">REGISTRO</h5>
+  <div class="card-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+      <div class="form-group col">
+        <label>Nombre</label>
+        <input
+         
+          type="text"
+          formControlName="nombre"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }"
+        />
+        <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+          <div *ngIf="f.nombre.errors.required">Este campo es obligatorio</div>
+        </div>
+      </div>
+      <div class="form-group col">
+        <label>Apellido</label>
+        <input
+         
+          type="text"
+          formControlName="apellido"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.apellido.errors }"
+        />
+        <div *ngIf="submitted && f.apellido.errors" class="invalid-feedback">
+          <div *ngIf="f.apellido.errors.required">Este campo es obligatorio</div>
+        </div>
+      </div>
+        </div>
+
+        <div class="form-group">
+            <label>Dirección de contacto</label>
+            <input
+             
+              type="text"
+              formControlName="direccion"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }"
+            />
+            <div *ngIf="submitted && f.direccion.errors" class="invalid-feedback">
+              <div *ngIf="f.direccion.errors.required">Este campo es obligatorio</div>
+             
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>telefono</label>
+            <input
+             
+              type="number"
+              formControlName="telefono"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }"
+            />
+            <div *ngIf="submitted && f.telefono.errors" class="invalid-feedback">
+              <div *ngIf="f.telefono.errors.required">Este campo es obligatorio</div>
+             
+            </div>
+          </div>
+
+      <div class="form-group">
+        <label>Correo</label>
+        <input
+         
+          type="text"
+          formControlName="correo"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.correo.errors }"
+        />
+        <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
+          <div *ngIf="f.correo.errors.required">Este campo es obligatorio</div>
+          <div *ngIf="f.correo.errors.email"> Debe ser una dirección de correo valida</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Contraseña</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+          />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Este campo es obligatorio</div>
+            <div *ngIf="f.password.errors.minlength">
+            La contraseña debe contener almenos 6 caracteres
+            </div>
+          </div>
+        </div>
+        <div class="form-group col">
+          <label>Confirmar contraseña</label>
+          <input
+            id="confirm-password"
+            type="password"
+            formControlName="confirmPassword"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"
+          />
+          <div
+            *ngIf="submitted && f.confirmPassword.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.confirmPassword.errors.required">
+             Confirmación de contraseña requerida
+            </div>
+            <div *ngIf="f.confirmPassword.errors.mustMatch">
+               La contraseña debe ser la mismo en los 2 campos
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group form-check">
+        <input
+          id="checkbox"
+          type="checkbox"
+          formControlName="acceptTerms"
+          id="acceptTerms"
+          class="form-check-input"
+          [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }"
+        />
+        <label for="acceptTerms" class="form-check-label"
+          >Acepta términos y condiciones</label
+        >
+        <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">
+          Marque la casilla de aceptar terminos y servicios
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary mr-1">Register</button>
+      </div>
+    </form>
+    <div class="container mt-2" *ngIf="errMesg != ''">
+      <div class="alert alert-danger">
+        {{ errMesg }}
+      </div>
+    </div>
+  </div>
+</div>
