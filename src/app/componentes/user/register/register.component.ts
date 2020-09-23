@@ -3,6 +3,7 @@ import { AuthService } from './../../../Servicios/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router'
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,6 +17,11 @@ export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
      submitted = false;
     ngOnInit() {
+      this.authS.isAuth().subscribe(resp=>{
+        if(resp){
+          this.router.navigate(['productos'])
+        }
+      })
       this.registerFormOnInit();
     }
    
@@ -50,11 +56,22 @@ export class RegisterComponent implements OnInit {
           telefono:this.registerForm.value.telefono,
           correo:this.registerForm.value.correo,
           direccion:this.registerForm.value.direccion,
-          user_id:""
+          user_id:"",
+          
         }
         this.authS.register(user,this.registerForm.value.password).then(resolve=>{
-          
-          this.router.navigate(['sdfsdfd']);
+          this.onReset()
+          Swal.fire({
+            icon: 'success',
+            title: 'Cuenta creada con éxito',
+            text: 'Porfavor ingrese a su cuenta',
+            
+          }).then(r=>{
+            window.location.reload()
+            
+            
+          })
+        
         }).catch(reject=>{
            this.errMesg=reject
            console.log(reject)
